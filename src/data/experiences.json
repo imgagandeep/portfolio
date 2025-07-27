@@ -1,0 +1,30 @@
+[
+  {
+    "dates": "October 2024 · Present",
+    "role": "Full Stack Developer",
+    "company": "UnoiaTech, Mohali",
+    "description": "As a full stack developer at UnoiaTech, I support the core team in website development, optimization, and implementing marketing strategies to enhance online presence. I focus on refining UI/UX designs to ensure seamless navigation, accessibility, and a responsive experience across devices. By integrating data solutions, I help provide actionable business insights, improve reporting, and enable data-driven decision-making. My work emphasizes building scalable and robust platforms designed for long-term performance, security, and flexibility.",
+    "logo": "/assets/company/unoiatech.jpg"
+  },
+  {
+    "dates": "February 2024 · September 2024",
+    "role": "Full Stack Developer",
+    "company": "Orderlink NZ Limited, New Zealand",
+    "description": "At Orderlink NZ Limited, I played a key role in automating the entire ordering process, streamlining operations from order placement to electronic invoicing. I developed scalable solutions to optimize supply chain logistics, ensuring compliance and improving collaboration between stakeholders. Collaborating closely with cross-functional teams, I applied data-driven strategies to adapt quickly to market trends and evolving customer needs.",
+    "logo": "/assets/company/orderlink.jpg"
+  },
+  {
+    "dates": "September 2021 · January 2023",
+    "role": "Software Development Engineer - 1",
+    "company": "Attryb Tech Pvt. Ltd., Bengaluru",
+    "description": "As part of the backend team at Attryb Tech, I contributed to the core Attryb product, including ML-powered targeted advertising built on abstractions over Google Ads. I modernized legacy codebases to align with current development standards, improving functionality and maintainability. Beyond coding, I documented technical workflows to help onboard new team members effectively. Additionally, I helped implement agile methodologies and best practices, enhancing collaboration and accelerating product development cycles.",
+    "logo": "/assets/company/attryb.jpg"
+  },
+  {
+    "dates": "August 2018 · December 2020 ",
+    "role": "Junior Quality Analyst",
+    "company": "Matrix Marketers, Mohali",
+    "description": "In my role as a junior quality analyst, I supported operational decision-making by analyzing quality and performance data. I developed and maintained detailed quality assurance documentation and test procedures. By defining and implementing quality initiatives, I contributed to reducing operational risk and ensuring product reliability. My responsibilities also included creating and executing test scripts, as well as thoroughly documenting and analyzing test results.",
+    "logo": "/assets/company/matrix_marketers.jpg"
+  }
+]

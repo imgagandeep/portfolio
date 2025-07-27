@@ -1,0 +1,16 @@
+---
+import ListSideProjects from "../../components/list-side-projects.astro";
+import PageHeading from "../../components/page-heading.astro";
+import Layout from "../../layouts/main.astro";
+---
+
+<Layout title="Side Projects">
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <PageHeading
+      title="Side Projects"
+      description="✨ Here are a few of the projects I’m currently working on. I’m passionate about exploring new ideas and bringing them to life through thoughtful design and clean, scalable code. Whether it’s experimenting with new technologies or solving real-world problems, I love turning concepts into polished, user-friendly applications. I’m always building, refining, and learning — so stay tuned for what’s next!"
+    />
+
+    {(<ListSideProjects />)}
+  </section>
+</Layout>

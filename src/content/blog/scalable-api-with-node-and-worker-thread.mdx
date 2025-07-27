@@ -1,0 +1,117 @@
+---
+title: "Building Scalable APIs with Node.js and Worker Threads"
+excerpt: "Discover how to handle CPU-intensive tasks in Node.js using worker threads, and design APIs that stay fast and responsive even under heavy computational load."
+publishDate: "2025-07-27"
+image: "/assets/images/blogs/node-worker-threads.png"
+category: "thoughts"
+author: "Gagandeep Singh"
+tags: [nodejs, backend, scalability, performance, coding]
+---
+
+<figure class="text-center text-xs -mx-32">
+  <img
+    src="/assets/images/blogs/node-worker-threads.png"
+    alt="Illustration of Node.js worker threads distributing load"
+  />
+</figure>
+
+<p class="first-letter:text-5xl first-letter:font-medium">
+  Node.js has earned its reputation for building fast, scalable network
+  applications. Its single-threaded, event-driven model makes it excellent for
+  handling I/O-bound tasks. But what happens when your API needs to process
+  CPU-intensive work like image manipulation, data parsing, or complex
+  calculations? By default, these tasks can block the event loop, making your
+  API feel slow or even unresponsive. The solution? Using Node.js worker threads
+  to offload heavy computation, so your main thread stays free to handle new
+  requests smoothly.
+</p>
+
+## Why Worker Threads Matter
+
+Traditionally, Node.js relies on its single-threaded event loop to achieve high
+concurrency. This works great for non-blocking operations (database queries,
+network calls, etc.), but falls short when your app needs to crunch data.
+
+Imagine an API endpoint that performs data encryption, image compression, or
+parsing large files. Without offloading, a single CPU-bound request could block
+other requests, hurting performance across your service.
+
+**Worker threads** enable true parallelism: each worker runs in its own thread,
+isolated from the main event loop. This allows your API to process heavy tasks
+without slowing down the rest of your app.
+
+## Typical Use Case
+
+A common scenario: you’re building an image upload endpoint where each image
+needs to be resized and optimized before storage. Processing on the main thread
+means every image slows your API for other users. Using worker threads, you can
+send each task to a worker, keeping the event loop fast and responsive.
+
+## Simple Example
+
+Here’s a quick look at how you might use worker threads:
+
+```js
+// main.js
+const { Worker } = require("worker_threads");
+
+function runHeavyTask(data) {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker("./worker.js", { workerData: data });
+    worker.on("message", resolve);
+    worker.on("error", reject);
+    worker.on("exit", (code) => {
+      if (code !== 0)
+        reject(new Error(`Worker stopped with exit code ${code}`));
+    });
+  });
+}
+
+// Inside your API route handler:
+app.post("/process", async (req, res) => {
+  try {
+    const result = await runHeavyTask(req.body.payload);
+    res.json({ success: true, data: result });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// worker.js
+const { parentPort, workerData } = require("worker_threads");
+
+// simulate heavy computation
+const result = heavyComputation(workerData);
+parentPort.postMessage(result);
+```
+
+## Design Considerations
+
+Worker threads unlock scalability — but design wisely:
+
+- Pool workers rather than creating a new one per request.
+- Use libraries like workerpool or piscina for management.
+- Keep worker code isolated and lightweight.
+- Be mindful of data transfer overhead (especially large payloads).
+
+## Beyond Worker Threads
+
+Workers are great for CPU-bound tasks. For I/O scaling (databases, APIs),
+stick to Node’s async model. And if your app grows further, consider:
+
+- **Clustering:** Run multiple Node.js processes across CPU cores.
+- **Microservices:** Isolate heavy workloads in separate services.
+- **Queues:** Use message queues (RabbitMQ, BullMQ) to distribute long-running jobs.
+
+Combining these techniques helps build APIs that stay fast, reliable, and
+scalable — even as demand grows.
+
+## Conclusion
+
+Node.js is more than just non-blocking I/O. By adding worker threads, your app
+can handle computationally heavy work without sacrificing responsiveness. Used
+thoughtfully, this small architectural change can transform your API from
+single-threaded bottleneck to modern, scalable service.
+
+Next time you see your event loop blocked by CPU work, consider: could a worker thread help?
+Often, the answer is yes — and it’s easier than you might think.

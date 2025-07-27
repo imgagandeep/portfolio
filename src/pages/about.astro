@@ -1,7 +1,7 @@
 ---
-import experiences from "../collections/experiences.json";
 import AboutExperience from "../components/about-experience.astro";
 import PageHeading from "../components/page-heading.astro";
+import experiences from "../data/experiences.json";
 import Layout from "../layouts/main.astro";
 ---
 
@@ -9,17 +9,21 @@ import Layout from "../layouts/main.astro";
   <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
     <PageHeading
       title="About Me"
-      description="Hello 👋 I'm a frontend engineer from Nanjing, China. I'm passionate about building new products and learning new technology."
+      description="Hello 👋 I'm Gagandeep Singh, a versatile fullstack developer with a strong foundation in QA, based in India. I specialize in crafting robust, scalable web applications using React.js and Next.js on the frontend, and Node.js and Python on the backend. I’m passionate about writing clean, maintainable code and designing systems that perform seamlessly at scale. Driven by continuous learning and a commitment to quality-driven development, I love transforming complex challenges into elegant, user-centric solutions. Always excited to collaborate on innovative projects that create meaningful impact."
     />
 
-    <img src="/assets/images/about.jpg" class="relative z-30 w-full my-10 rounded-xl" />
+    <img
+      src="/assets/images/about.jpg"
+      class="relative z-30 w-full my-10 rounded-xl"
+    />
 
-    <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">Short Bio</h2>
+    <!-- <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">Short Bio</h2>
     <p
       class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
     >
-      Front-end cutter 🧑🏻‍💻, back-end amateur 🤷🏻‍♂️, operations digging holes person 🤦🏻‍♂️.
-    </p>
+      Front-end cutter 🧑🏻‍💻, back-end amateur 🤷🏻‍♂️, operations digging holes person
+      🤦🏻‍♂️.
+    </p> -->
 
     <h2
       class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
@@ -39,21 +43,26 @@ import Layout from "../layouts/main.astro";
                 logo={experience.logo}
               />
             </div>
-          )
+          );
         })
       }
     </div>
 
-    <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Let's Connect</h2>
+    <h2
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+    >
+      Let's Connect
+    </h2>
     <p
       class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
     >
       If you want to stay up to date with my work be sure to <a
-        href="https://x.com/0xKaibi"
+        href="https://www.linkedin.com/in/imgagandeep/"
         target="_blank"
-        class="text-indigo-600 underline">follow me on twitter</a
-      >, or you can send me an <a href="mailto:astro-aria#miantiao.me" class="text-indigo-600 underline"
-        >email</a
+        class="text-indigo-600 underline">follow me on linkedin</a
+      >, or you can send me an <a
+        href="mailto:gagandeepdevs@gmail.com"
+        class="text-indigo-600 underline">email</a
       > and I'll be sure to get back to you.
     </p>
   </section>
