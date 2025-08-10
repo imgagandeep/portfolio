@@ -53,7 +53,7 @@ window.evaluateHeaderPosition = () => {
   if (window.scrollY > 16) {
     headerElement.firstElementChild.classList.add(...stickyClassesContainer);
     headerElement.firstElementChild.classList.remove(
-      ...unstickyClassesContainer,
+      ...unstickyClassesContainer
     );
     headerElement.classList.add(...stickyClasses);
     headerElement.classList.remove(...unstickyClasses);
@@ -136,7 +136,10 @@ function showNight(animate) {
 window.applyMenuItemClasses = () => {
   const menuItems = document.querySelectorAll("#menu a");
   for (let i = 0; i < menuItems.length; i++) {
-    if (menuItems[i].pathname === window.location.pathname) {
+    const itemPath = menuItems[i].pathname;
+    const currentPath = window.location.pathname;
+
+    if (currentPath === itemPath || currentPath.startsWith(itemPath + "/")) {
       menuItems[i].classList.add("text-neutral-900", "dark:text-white");
     }
   }

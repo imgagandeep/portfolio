@@ -1,12 +1,5 @@
 ---
 import ImageTile from "./image-tile.astro";
-import StatusTag from "./status-tag.astro";
-
-type Tag = "default" | "dark" | "red" | "green" | "yellow";
-type Status = "Planning" | "Backlog" | "On hold" | "Live" | "In progress";
-type TagMap = {
-  [K in Status]: Tag;
-};
 
 const {
   name,
@@ -15,26 +8,15 @@ const {
   image,
   domains,
   layout = "card",
-  status,
   hrefBase,
 } = Astro.props;
 
 const baseStyle = "w-full h-full rounded-2xl";
 
-const statusMap = {
-  "In progress": "default",
-  Live: "green",
-  Backlog: "dark",
-  "On hold": "red",
-  Planning: "yellow",
-} as TagMap;
-
-// ...existing code...
 const layoutStyle: Record<string, string> = {
   card: "flex flex-col gap-3",
   list: "flex flex-row-reverse gap-3 justify-between",
 };
-// ...existing code...
 
 const coverSize: Record<string, string> = {
   card: "w-full h-48 md:h-36",
@@ -47,18 +29,8 @@ const headingStyle: Record<string, string> = {
 };
 
 const clampStyle: Record<string, string> = {
-  card: "line-clamp-5 md:line-clamp-3",
-  list: "line-clamp-4 md:line-clamp-3",
-};
-
-const statusCardLayout: Record<string, string> = {
-  card: "block -mt-2",
-  list: "hidden",
-};
-
-const _statusListLayout: Record<string, string> = {
-  card: "hidden",
-  list: "block",
+  card: "line-clamp-5 md:line-clamp-4",
+  list: "line-clamp-5 md:line-clamp-4",
 };
 
 const visibility: Record<string, string> = {
@@ -102,12 +74,6 @@ const textHoverStyle =
       >
         {description}
       </div>
-      <!-- <div class:list={[statusListLayout[layout], visibility[layout]]}>
-        <StatusTag text={status} type={statusMap[status as Status]} />
-      </div> -->
-    </div>
-    <div class:list={[statusCardLayout[layout], visibility[layout]]}>
-      <StatusTag text={status} type={statusMap[status as Status]} />
     </div>
   </div>
 </a>
