@@ -1,0 +1,19 @@
+"use client";
+
+import Square from "./square";
+
+export default function SquareLine() {
+  return (
+    <div className="relative flex h-[30px] w-full divide-x divide-dashed divide-neutral-300 dark:divide-neutral-700 sm:h-[45px] md:h-[60px] xl:h-[88px]">
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+      <Square />
+    </div>
+  );
+}
